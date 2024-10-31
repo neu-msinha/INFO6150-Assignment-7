@@ -1,53 +1,68 @@
-var validate =  () => {
+$(document).on("keydown", function(event) {
+  const isValid = validate();
+  $("#submit").prop("disabled", !isValid).toggleClass("disabled", !isValid);
+});
 
-  var isValidated = true;
+$("#typePasswordX, #typeConfirmPasswordX").on("input", () => {
+  const password = $("#typePasswordX").val();
+  const confirmPassword = $("#typeConfirmPasswordX").val();
 
-  const emailId = $("#typeEmailX");
-  const password = $("#typePasswordX");
-  const userName = $("#typeuserX");
-  const confirmPassword = $("#typeConfirmPasswordX");
+  if (password !== confirmPassword) {
+    $("#confirmMsg").text("Passwords didn't match");
+  } else {
+    $("#confirmMsg").text("");
+  }
+});
 
-  localStorage.setItem("userName", userName.val());
+const validate = () => {
+  let isValidated = true;
+
+  const emailId = $("#typeEmailX").val();
+  const password = $("#typePasswordX").val();
+  const userName = $("#typeuserX").val();
+  const confirmPassword = $("#typeConfirmPasswordX").val();
+
+  localStorage.setItem("userName", userName);
 
   const domain = "northeastern.edu";
-  let emailvalid = false;
+  const emailValid = validateEmail(emailId) && emailId.includes(domain);
 
-  if (validateEmail(emailId.val()) && emailId.val().indexOf(domain) !== -1) {
-    emailvalid = true;
-  } else if (emailId.val().indexOf(domain) === -1) {
-    emailvalid = false;
-  }
+  // Username validation
+  $("#usernameMsg").text(userName ? "" : "Username cannot be empty");
+  isValidated &= !!userName;
 
-  if (userName.val() === "") {
-    $("#usernameMsg").text("Username cannot be empty");
-    
-  }
-  if(password.val() === "") {
+  // Password validation
+  if (!password) {
     $("#passwordMsg").text("Password cannot be empty");
     isValidated = false;
-  }
-  if(confirmPassword.val() === "") {
-    $("#confirmMsg").text("Confirm Password cannot be empty");
+  } else if (password.length < 5 || password.length > 16) {
+    $("#passwordMsg").text("Password must be between 5 and 16 characters");
     isValidated = false;
+  } else {
+    $("#passwordMsg").text(""); // Clear the message if valid
   }
-  if (emailvalid === false) {
-    $("#emailMsg").text("enter the valid email @northeastern");
+
+  // Confirm password validation
+  $("#confirmMsg").text(confirmPassword ? "" : "Confirm Password cannot be empty");
+  isValidated &= !!confirmPassword;
+
+  // Email validation
+  if (!emailValid) {
+    $("#emailMsg").text("Enter a valid email @northeastern");
     isValidated = false;
-  } 
-  if(password.val() !== confirmPassword.val()) {
-    $("#confirmMsg").text("Passwords didnt match");
-    isValidated = false;
+  } else {
+    $("#emailMsg").text("");
   }
-  
+
   return isValidated;
-}
+};
 
 const validateEmail = email => {
   const validateEmailId = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return validateEmailId.test(email);
 };
 
-function calculate(operation) {
+var calculate = (operation) => {
   const n1 = parseFloat($("#n1").val());
   const n2 = parseFloat($("#n2").val());
   let result;
@@ -73,19 +88,11 @@ function calculate(operation) {
 }
 
 $("#n1").on("keyup", () => {
-  if (validatenumber($("#n1").val())) {
-    $("#n1msg").text("");
-  } else {
-    $("#n1msg").text("Enter the valid number");
-  }
+  $("#n1msg").text(validatenumber($("#n1").val()) ? "" : "Enter a valid number");
 });
 
 $("#n2").on("keyup", () => {
-  if (validatenumber($("#n2").val())) {
-    $("#n2msg").text("");
-  } else {
-    $("#n2msg").text("Enter the valid number");
-  }
+  $("#n2msg").text(validatenumber($("#n2").val()) ? "" : "Enter a valid number");
 });
 
 const validatenumber = no => {
