@@ -72,30 +72,6 @@ function calculate(operation) {
   $('#result').val(result);
 }
 
-function calcadd() {
-  const n1 = parseFloat($("#n1").val());
-  const n2 = parseFloat($("#n2").val());
-  $('#result').val(n1 + n2);
-}
-
-function calcsub() {
-  const n1 = parseFloat($("#n1").val());
-  const n2 = parseFloat($("#n2").val());
-  $('#result').val(n1 - n2);
-}
-
-function calcdivide() {
-  const n1 = parseFloat($("#n1").val());
-  const n2 = parseFloat($("#n2").val());
-  $('#result').val(n1 / n2);
-}
-
-function calcmultiply() {
-  const n1 = parseFloat($("#n1").val());
-  const n2 = parseFloat($("#n2").val());
-  $('#result').val(n1 * n2);
-}
-
 $("#n1").on("keyup", () => {
   if (validatenumber($("#n1").val())) {
     $("#n1msg").text("");
@@ -113,6 +89,6 @@ $("#n2").on("keyup", () => {
 });
 
 const validatenumber = no => {
-  const validatenumber1 = /^[0-9]\d*(\.\d+)?$/;
+  const validatenumber1 = /^-?\d*\.?\d+$/;
   return validatenumber1.test(no);
 };
