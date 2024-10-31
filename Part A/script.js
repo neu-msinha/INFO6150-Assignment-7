@@ -21,12 +21,16 @@ const validateUserName = () => {
 const validatePassword = () => {
   const password = $("#typePasswordX").val();
   let isValid = true;
+  const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
 
   if (!password) {
     $("#passwordMsg").text("Password cannot be empty");
     isValid = false;
   } else if (password.length < 5 || password.length > 16) {
     $("#passwordMsg").text("Password must be between 5 and 16 characters");
+    isValid = false;
+  } else if (!specialCharPattern.test(password)) {
+    $("#passwordMsg").text("Password must include at least one special character");
     isValid = false;
   } else {
     $("#passwordMsg").text("");
