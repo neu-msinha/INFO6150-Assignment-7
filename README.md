@@ -85,7 +85,3 @@ For Part B, I created a Stopwatch Web Application as a single-page application t
 3. The GitHub URL of the assignment is included in the Canvas remarks.
 
 ---
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
