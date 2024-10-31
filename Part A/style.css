@@ -1,0 +1,36 @@
+.container{
+    padding-top: 5%;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-right: 15%;
+    padding-left: 15%;
+    padding-bottom: 5%;
+    margin-bottom: 10%;
+    background-color:#04648b ;
+    color: white;
+    border-radius: 50px;
+}
+
+button{
+    margin-left: 15px;
+
+}
+h1{
+    font-size: larger;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-stretch: expanded;
+}
+span{
+    color: rgb(47, 52, 46);
+    
+}
+
+.gradient-custom {
+    background: #7db4eb;
+    background: -webkit-linear-gradient(to right, rgb(49, 5, 97), rgb(15, 62, 144));
+    background: linear-gradient(to right, rgb(26, 118, 188), rgb(6, 140, 69))
+}
+
+
+   

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="style2.css">
+      <title>Calculator</title>
+   </head>
+   <body class="gradient-custom">
+      <div class="container my-5">
+         <div id="uservalueoutput" class="text-center mb-4"></div>
+         <script>
+            var value = localStorage.getItem('userName');
+            uservalueoutput.innerHTML = `<h1>Welcome, ${value}</h1>`;
+         </script>  
+         <h2 class="text-center mb-4">Calculator</h2>
+         <div class="mb-3">
+            <label for="n1" class="form-label">Number 1</label>
+            <input type="text" id="n1" class="form-control">
+            <small id="n1msg" class="text-danger"></small>
+         </div>
+         <div class="mb-3">
+            <label for="n2" class="form-label">Number 2</label>
+            <input type="text" id="n2" class="form-control">
+            <small id="n2msg" class="text-danger"></small>
+         </div>
+         <div class="d-flex justify-content-around mb-4">
+            <button onclick="calculate('add');" type="button" class="btn btn-primary">Add</button>
+            <button onclick="calculate('subtract');" type="button" class="btn btn-secondary">Subtract</button>
+            <button onclick="calculate('divide');" type="button" class="btn btn-warning">Divide</button>
+            <button onclick="calculate('multiply');" type="button" class="btn btn-success">Multiply</button>
+         </div>
+         <div class="mb-3">
+            <label for="result" class="form-label">Result</label>
+            <input type="text" id="result" class="form-control" disabled>
+         </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+      <script src="script.js"></script>
+   </body>
+</html>
