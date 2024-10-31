@@ -6,11 +6,14 @@ $(document).on("keydown", function(event) {
 $("#typePasswordX, #typeConfirmPasswordX").on("input", () => {
   const password = $("#typePasswordX").val();
   const confirmPassword = $("#typeConfirmPasswordX").val();
-
+  
   if (password !== confirmPassword) {
     $("#confirmMsg").text("Passwords didn't match");
+    $("#submit").prop("disabled", true); 
   } else {
     $("#confirmMsg").text("");
+    const isValid = validate();
+    $("#submit").prop("disabled", !isValid);
   }
 });
 
